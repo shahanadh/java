@@ -1,0 +1,638 @@
+A - Reverse string 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+char[] a=s.toCharArray();
+int i=0;
+int j=a.length-1;
+while(i<j){
+char t=a[i];
+a[i]=a[j];
+a[j]=t;
+i++;
+j--;
+}
+System.out.println(new String(a));
+}
+}
+
+B - Odd even index
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+int n=s.length();
+for(int i=1;i<n;i+=2){
+System.out.print(s.charAt(i));
+}
+for(int i=0;i<n;i+=2){
+System.out.print(s.charAt(i));
+}
+}
+}
+
+C - Occurrence of a character 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+char ch=sc.nextLine().charAt(0);
+int count=0;
+for(int i=0;i<s.length();i++){
+if(s.charAt(i)==ch)count++;
+}
+System.out.println(count);
+}
+}
+
+D - Vowels in a string 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+boolean ok=true;
+for(int i=0;i<s.length();i++){
+char c=s.charAt(i);
+if(!(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U')){
+ok=false;
+break;
+}
+}
+if(ok)System.out.println("Yes");
+else System.out.println("No");
+}
+}
+
+E - Digits in a string 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+boolean ok=true;
+for(int i=0;i<s.length();i++){
+char c=s.charAt(i);
+if(c<'0'||c>'9'){
+ok=false;
+break;
+}
+}
+if(ok)System.out.println("Yes");
+else System.out.println("No");
+}
+}
+
+F - Count vowels and consonants 
+
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+int v=0;
+int c=0;
+for(int i=0;i<s.length();i++){
+char ch=s.charAt(i);
+if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
+v++;
+}else if((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')){
+c++;
+}
+}
+System.out.println(v+" "+c);
+}
+}
+
+G - Toggle case of characters 
+
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+StringBuilder sb=new StringBuilder();
+for(int i=0;i<s.length();i++){
+char c=s.charAt(i);
+if(c>='a'&&c<='z'){
+sb.append((char)(c-32));
+}else if(c>='A'&&c<='Z'){
+sb.append((char)(c+32));
+}else{
+sb.append(c);
+}
+}
+System.out.println(sb.toString());
+}
+}
+
+H - Compress a string 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+StringBuilder sb=new StringBuilder();
+int count=1;
+for(int i=1;i<=s.length();i++){
+if(i<s.length()&&s.charAt(i)==s.charAt(i-1)){
+count++;
+}else{
+sb.append(s.charAt(i-1));
+sb.append(count);
+count=1;
+}
+}
+System.out.println(sb.toString());
+}
+}
+
+
+I - Prefix and suffix 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+int n=s.length();
+int ans=0;
+for(int len=n-1;len>=1;len--){
+if(s.substring(0,len).equals(s.substring(n-len))){
+ans=len;
+break;
+}
+}
+System.out.println(ans);
+}
+}
+
+
+J - Find First Repeating Character 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int T=sc.nextInt();
+while(T>0){
+String s=sc.next();
+int[] freq=new int[26];
+for(int i=0;i<s.length();i++){
+freq[s.charAt(i)-'a']++;
+}
+char ans='.';
+for(int i=0;i<s.length();i++){
+if(freq[s.charAt(i)-'a']>1){
+ans=s.charAt(i);
+break;
+}
+}
+System.out.println(ans);
+T--;
+}
+}
+}
+
+K - Words, Vowels and Consonants 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int T=Integer.parseInt(sc.nextLine());
+while(T>0){
+String s=sc.nextLine();
+int words=0,v=0,c=0;
+boolean inWord=false;
+for(int i=0;i<s.length();i++){
+char ch=s.charAt(i);
+if(ch!=' '){
+if(!inWord){
+words++;
+inWord=true;
+}
+if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
+v++;
+}else{
+c++;
+}
+}else{
+inWord=false;
+}
+}
+System.out.println(words+" "+v+" "+c);
+T--;
+}
+}
+}
+
+L - Anagrams easy 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int T=sc.nextInt();
+while(T>0){
+String a=sc.next();
+String b=sc.next();
+if(a.length()!=b.length()){
+System.out.println("False");
+}else{
+int[] freq=new int[26];
+for(int i=0;i<a.length();i++){
+freq[a.charAt(i)-'a']++;
+freq[b.charAt(i)-'a']--;
+}
+boolean ok=true;
+for(int i=0;i<26;i++){
+if(freq[i]!=0){
+ok=false;
+break;
+}
+}
+if(ok)System.out.println("True");
+else System.out.println("False");
+}
+T--;
+}
+}
+}
+
+M - Pangram 
+
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+String s=sc.next();
+boolean[] seen=new boolean[26];
+for(int i=0;i<s.length();i++){
+char c=Character.toLowerCase(s.charAt(i));
+seen[c-'a']=true;
+}
+boolean ok=true;
+for(int i=0;i<26;i++){
+if(!seen[i]){
+ok=false;
+break;
+}
+}
+if(ok)System.out.println("YES");
+else System.out.println("NO");
+}
+}
+
+N - Way Too Long Words 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+while(n>0){
+String s=sc.next();
+if(s.length()>10){
+System.out.println(s.charAt(0)+(s.length()-2)+""+s.charAt(s.length()-1));
+}else{
+System.out.println(s);
+}
+n--;
+}
+}
+}
+
+O - Love Story 
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+String target="codeforces";
+while(t>0){
+String s=sc.next();
+int count=0;
+for(int i=0;i<10;i++){
+if(s.charAt(i)!=target.charAt(i)){
+count++;
+}
+}
+System.out.println(count);
+t--;
+}
+}
+}
+
+P - New Palindrome 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+String s=sc.next();
+boolean allSame=true;
+for(int i=1;i<s.length();i++){
+if(s.charAt(i)!=s.charAt(0)){
+allSame=false;
+break;
+}
+}
+if(allSame)System.out.println("NO");
+else System.out.println("YES");
+t--;
+}
+}
+}
+
+Q - Find and Replace 
+
+
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+int n=sc.nextInt();
+String s=sc.next();
+if(check(s,n,'0')||check(s,n,'1')){
+System.out.println("YES");
+}else{
+System.out.println("NO");
+}
+t--;
+}
+}
+static boolean check(String s,int n,char start){
+char[] map=new char[26];
+for(int i=0;i<26;i++)map[i]='?';
+for(int i=0;i<n;i++){
+char expected=(i%2==0)?start:(start=='0'?'1':'0');
+int idx=s.charAt(i)-'a';
+if(map[idx]=='?'){
+map[idx]=expected;
+}else{
+if(map[idx]!=expected)return false;
+}
+}
+return true;
+}
+}
+R - Insert Digit
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+int n=sc.nextInt();
+int d=sc.nextInt();
+String s=sc.next();
+StringBuilder sb=new StringBuilder();
+boolean inserted=false;
+for(int i=0;i<n;i++){
+if(!inserted&&s.charAt(i)-'0'<d){
+sb.append(d);
+inserted=true;
+}
+sb.append(s.charAt(i));
+}
+if(!inserted)sb.append(d);
+System.out.println(sb.toString());
+t--;
+}
+}
+}
+
+ S - Count the Number of Pairs
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+int n=sc.nextInt();
+int k=sc.nextInt();
+String s=sc.next();
+int[] low=new int[26];
+int[] up=new int[26];
+for(int i=0;i<n;i++){
+char c=s.charAt(i);
+if(c>='a'&&c<='z')low[c-'a']++;
+else up[c-'A']++;
+}
+int ans=0;
+for(int i=0;i<26;i++){
+int direct=Math.min(low[i],up[i]);
+ans+=direct;
+int rem=Math.abs(low[i]-up[i]);
+int extra=Math.min(rem/2,k);
+ans+=extra;
+k-=extra;
+}
+System.out.println(ans);
+t--;
+}
+}
+}
+
+T - Is It a Cat? 
+
+ import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+int n=sc.nextInt();
+String s=sc.next().toLowerCase();
+int i=0;
+boolean ok=true;
+if(i<n&&s.charAt(i)=='m'){
+while(i<n&&s.charAt(i)=='m')i++;
+}else ok=false;
+if(ok&&i<n&&s.charAt(i)=='e'){
+while(i<n&&s.charAt(i)=='e')i++;
+}else ok=false;
+if(ok&&i<n&&s.charAt(i)=='o'){
+while(i<n&&s.charAt(i)=='o')i++;
+}else ok=false;
+if(ok&&i<n&&s.charAt(i)=='w'){
+while(i<n&&s.charAt(i)=='w')i++;
+}else ok=false;
+if(ok&&i==n)System.out.println("YES");
+else System.out.println("NO");
+t--;
+}
+}
+}
+U - Prefix and Suffix Array 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+int n=sc.nextInt();
+String[] arr=new String[2*n-2];
+for(int i=0;i<2*n-2;i++)arr[i]=sc.next();
+String s1="",s2="";
+for(int i=0;i<2*n-2;i++){
+if(arr[i].length()==n-1){
+if(s1.equals(""))s1=arr[i];
+else s2=arr[i];
+}
+}
+String cand1=s1+s2.charAt(n-2);
+String cand2=s2+s1.charAt(n-2);
+if(isPal(cand1)||isPal(cand2))System.out.println("YES");
+else System.out.println("NO");
+t--;
+}
+}
+static boolean isPal(String s){
+int i=0,j=s.length()-1;
+while(i<j){
+if(s.charAt(i)!=s.charAt(j))return false;
+i++;j--;
+}
+return true;
+}
+}
+
+V - SSeeeeiinngg DDoouubbllee 
+
+import java.util.Scanner;
+import java.util.Arrays;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+String s=sc.next();
+char[] a=s.toCharArray();
+Arrays.sort(a);
+StringBuilder sb=new StringBuilder();
+for(int i=0;i<a.length;i++){
+sb.append(a[i]);
+sb.append(a[i]);
+}
+System.out.println(sb.toString());
+t--;
+}
+}
+}
+
+W - Compare T-Shirt Sizes 
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+String a=sc.next();
+String b=sc.next();
+if(a.equals(b)){
+System.out.println("=");
+}else{
+char la=a.charAt(a.length()-1);
+char lb=b.charAt(b.length()-1);
+if(la!=lb){
+if(la=='S')System.out.println("<");
+else if(la=='M'&&lb=='L')System.out.println("<");
+else if(la=='L')System.out.println(">");
+else System.out.println(">");
+}else{
+if(la=='M'){
+System.out.println("=");
+}else if(la=='S'){
+if(a.length()>b.length())System.out.println("<");
+else System.out.println(">");
+}else{
+if(a.length()>b.length())System.out.println(">");
+else System.out.println("<");
+}
+}
+}
+t--;
+}
+}
+}
+
+
+X - Decode String 
+
+
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int q=sc.nextInt();
+while(q>0){
+int n=sc.nextInt();
+String t=sc.next();
+StringBuilder sb=new StringBuilder();
+for(int i=n-1;i>=0;){
+if(t.charAt(i)=='0'){
+int num=(t.charAt(i-2)-'0')*10+(t.charAt(i-1)-'0');
+sb.append((char)('a'+num-1));
+i-=3;
+}else{
+int num=t.charAt(i)-'0';
+sb.append((char)('a'+num-1));
+i--;
+}
+}
+System.out.println(sb.reverse().toString());
+q--;
+}
+}
+}
+
+Y - YES or YES? 
+import java.util.Scanner;
+class Main{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int t=sc.nextInt();
+while(t>0){
+String s=sc.next();
+if(s.toLowerCase().equals("yes")){
+System.out.println("YES");
+}else{
+System.out.println("NO");
+}
+t--;
+}
+}
+}
+
+
+
+
+
+
+
+
+
